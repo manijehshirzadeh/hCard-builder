@@ -35,7 +35,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main>
-				<Grid container height="100vh">
+				<Grid container height={{ md: "100vh" }}>
 					<Grid item xs={12} md={6} mb={{ xs: 2 }}>
 						<HcardBuilderForm formikProps={formikProps} />
 					</Grid>

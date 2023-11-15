@@ -1,10 +1,11 @@
 import * as React from "react"
 import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
+import TextField, { TextFieldProps } from "@mui/material/TextField"
 import { Button, Divider, Grid, Typography } from "@mui/material"
 import { FormikProps } from "formik"
 import { HcardBuilderFormData } from "./hcardBuilderFormData"
 import { useRef } from "react"
+import { UnderlinedTitle } from "./UnderlinedTitle"
 
 export function HcardBuilderForm({
 	formikProps
@@ -13,148 +14,98 @@ export function HcardBuilderForm({
 }) {
 	const hiddenFileInput = useRef(null)
 	return (
-		<Box
-			component="form"
-			px={6}
-			noValidate
-			autoComplete="off"
-			pr={8}
-			py={"auto"}
-		>
+		<Box component="form" px={5} noValidate autoComplete="off" py={"auto"}>
 			<Typography variant="h4">hCard Builder</Typography>
 
 			<Grid container spacing={4}>
-				<Grid item xs={12}>
-					<Typography variant="body2" color="grey.400" mt={3}>
-						PERSONAL DETAILS
-					</Typography>
-					<Divider />
-				</Grid>
-				<Grid item xs={6}>
+				<UnderlinedTitle title="PERSONAL DETAILS" />
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
-						fullWidth
+						{...sharedTextFieldProps}
 						value={formikProps.values.givenName}
 						onChange={e =>
 							formikProps.setFieldValue("givenName", e.target.value)
 						}
 						id="given-name"
 						label="GIVEN NAME"
-						defaultValue=""
-						autoComplete="off"
-						InputLabelProps={{
-							shrink: true
-						}}
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
+						{...sharedTextFieldProps}
 						value={formikProps.values.surname}
 						onChange={e => formikProps.setFieldValue("surname", e.target.value)}
-						fullWidth
 						InputLabelProps={{
 							shrink: true
 						}}
 						id="surname"
 						label="SURNAME"
-						defaultValue=""
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
-						fullWidth
+						{...sharedTextFieldProps}
 						value={formikProps.values.email}
 						onChange={e => formikProps.setFieldValue("email", e.target.value)}
 						id="email"
 						label="EMAIL"
-						defaultValue=""
-						InputLabelProps={{
-							shrink: true
-						}}
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
+						{...sharedTextFieldProps}
 						value={formikProps.values.phone}
 						onChange={e => formikProps.setFieldValue("phone", e.target.value)}
-						fullWidth
 						id="phone"
 						label="PHONE"
 						type="number"
-						InputLabelProps={{
-							shrink: true
-						}}
 					/>
 				</Grid>
-				<Grid item xs={12}>
-					<Typography variant="body2" color="grey.400" mt={3}>
-						ADDRESS
-					</Typography>
-					<Divider />
-				</Grid>
+				<UnderlinedTitle title="ADDRESS" />
 
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
+						{...sharedTextFieldProps}
 						value={formikProps.values.streetNumber}
 						onChange={e =>
 							formikProps.setFieldValue("streetNumber", e.target.value)
 						}
-						fullWidth
-						InputLabelProps={{
-							shrink: true
-						}}
 						id="street-number"
 						label="HOUSE NAME OR #"
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
-						fullWidth
+						{...sharedTextFieldProps}
 						value={formikProps.values.streetName}
 						onChange={e =>
 							formikProps.setFieldValue("streetName", e.target.value)
 						}
 						id="street-name"
 						label="STREET"
-						InputLabelProps={{
-							shrink: true
-						}}
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
+						{...sharedTextFieldProps}
 						value={formikProps.values.suburn}
 						onChange={e => formikProps.setFieldValue("suburn", e.target.value)}
-						fullWidth
-						InputLabelProps={{
-							shrink: true
-						}}
 						id="suburb"
 						label="SUBURB"
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
+						{...sharedTextFieldProps}
 						value={formikProps.values.state}
-						InputLabelProps={{
-							shrink: true
-						}}
 						onChange={e => formikProps.setFieldValue("state", e.target.value)}
 						id="state"
 						label="STATE"
-						fullWidth
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
+						{...sharedTextFieldProps}
 						value={formikProps.values.postCode}
 						onChange={e =>
 							formikProps.setFieldValue("postCode", e.target.value)
@@ -162,26 +113,18 @@ export function HcardBuilderForm({
 						id="postcode"
 						label="POSTCODE"
 						type="number"
-						InputLabelProps={{
-							shrink: true
-						}}
-						fullWidth
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<TextField
-						size="small"
-						fullWidth
+						{...sharedTextFieldProps}
 						value={formikProps.values.country}
 						onChange={e => formikProps.setFieldValue("country", e.target.value)}
 						id="country"
 						label="COUNTRY"
-						InputLabelProps={{
-							shrink: true
-						}}
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<Button
 						size="large"
 						fullWidth
@@ -217,7 +160,7 @@ export function HcardBuilderForm({
 						className="filetype"
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} md={6}>
 					<Button
 						size="large"
 						sx={{
@@ -238,4 +181,14 @@ export function HcardBuilderForm({
 			</Grid>
 		</Box>
 	)
+}
+
+const sharedTextFieldProps: Partial<TextFieldProps> = {
+	size: "small",
+	fullWidth: true,
+	InputLabelProps: {
+		shrink: true
+	},
+	defaultValue: "",
+	autoComplete: "off"
 }

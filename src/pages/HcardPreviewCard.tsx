@@ -12,6 +12,7 @@ import {
 } from "@mui/material"
 import { FormikProps } from "formik"
 import { HcardBuilderFormData } from "./hcardBuilderFormData"
+import { HcardDetailsLabeledValue } from "./HcardDetailsLabeledValue"
 
 export function HcardPreviewCard({
 	formikProps
@@ -31,7 +32,7 @@ export function HcardPreviewCard({
 
 	let fullName = ""
 	if (formikProps.values.givenName) fullName += formikProps.values.givenName
-	if (formikProps.values.surname) fullName += formikProps.values.surname
+	if (formikProps.values.surname) fullName += " " + formikProps.values.surname
 	return (
 		<Box position="relative">
 			<Typography position="absolute" top={-30} right={40} color={"#A2A4A8"}>
@@ -39,15 +40,20 @@ export function HcardPreviewCard({
 			</Typography>
 			<Card sx={{ mx: 5, my: 15, position: "relative" }}>
 				<CardHeader
-					sx={{ backgroundColor: "#374D61", height: 100, color: "red" }}
+					sx={{
+						backgroundColor: "#374D61",
+						height: 100,
+						color: "red",
+						pl: { xs: 0 }
+					}}
 					avatar={
 						<Avatar
 							variant="square"
 							sx={{
 								position: "absolute",
 								right: 20,
-								height: 150,
-								width: 120,
+								height: { xs: 80, sm: 150 },
+								width: { xs: 60, sm: 110 },
 								top: 15
 							}}
 							aria-label="recipe"
@@ -61,64 +67,58 @@ export function HcardPreviewCard({
 						</Avatar>
 					}
 					title={
-						<Typography pt={5} color="white" variant="h5">
+						<Typography
+							pt={{ xs: 10, md: 5 }}
+							pl={{ xs: 0, md: 5 }}
+							color="white"
+							variant="h5"
+						>
 							{fullName}
 						</Typography>
 					}
 				/>
 				<CardContent sx={{ py: 3 }}>
-					<Grid height={40} container>
-						<Grid xs={2} display="flex" alignItems={"center"} item>
-							<Typography color={"grey"}>EMAIL</Typography>
-						</Grid>
-						<Grid item xs={3} display="flex">
-							<Typography>{formikProps.values.email}</Typography>
-						</Grid>
+					<Grid height={{ xs: 60, md: 30 }} container>
+						<HcardDetailsLabeledValue
+							label="EMAIL"
+							value={formikProps.values.email}
+						/>
 					</Grid>
 					<Divider />
-					<Grid height={40} container>
-						{" "}
-						<Grid xs={2} display="flex" alignItems={"center"} item>
-							<Typography color={"grey"}>PHONE</Typography>
-						</Grid>
-						<Grid item xs={3} display="flex">
-							<Typography>{formikProps.values.phone}</Typography>
-						</Grid>
+					<Grid height={{ xs: 60, md: 30 }} container>
+						<HcardDetailsLabeledValue
+							label="PHONE"
+							value={formikProps.values.phone}
+						/>
 					</Grid>
 					<Divider />
-					<Grid height={40} container>
-						<Grid xs={2} display="flex" alignItems={"center"} item>
-							<Typography color={"grey"}>ADDRESS</Typography>
-						</Grid>
-						<Grid item xs={3} display="flex" alignItems={"center"}>
-							<Typography>{addressLineOne}</Typography>
-						</Grid>
+					<Grid height={{ xs: 60, md: 30 }} container>
+						<HcardDetailsLabeledValue label="ADDRESS" value={addressLineOne} />
 					</Grid>
 					<Divider />
-					<Grid height={40} container>
-						<Grid xs={2} display="flex" alignItems={"center"} item>
-							<Typography></Typography>
-						</Grid>
-						<Grid item xs={3} alignItems={"center"} display="flex">
-							<Typography>{addressLindTwo}</Typography>
-						</Grid>
+					<Grid height={{ xs: 60, md: 30 }} container>
+						<HcardDetailsLabeledValue label="" value={addressLindTwo} />
 					</Grid>
 					<Divider />
-					<Grid height={{ xs: 80, sm: 2, md: 40 }} container>
+					<Grid height={{ xs: 60, md: 30 }} container>
 						<Grid item xs={12} md={6}>
-							<Grid my={1} container>
+							<Grid container>
 								<Grid xs={4} display="flex" alignItems={"center"} item>
-									<Typography color={"grey"}>POSTCODE</Typography>
+									<Typography variant="overline" color={"grey"}>
+										POSTCODE
+									</Typography>
 								</Grid>
-								<Grid item xs={3} display="flex">
+								<Grid item xs={3} display="flex" alignItems={"center"}>
 									<Typography>{formikProps.values.postCode}</Typography>
 								</Grid>
 							</Grid>
 						</Grid>
 						<Grid item xs={12} md={6}>
-							<Grid my={1} container>
+							<Grid container>
 								<Grid xs={4} display="flex" alignItems={"center"} item>
-									<Typography color={"grey"}>COUNTRY</Typography>
+									<Typography variant="overline" color={"grey"}>
+										COUNTRY
+									</Typography>
 								</Grid>
 								<Grid item xs={3} display="flex">
 									<Typography>{formikProps.values.country}</Typography>
