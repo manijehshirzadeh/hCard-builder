@@ -2,19 +2,28 @@ import { Grid, Typography } from "@mui/material"
 
 export function HcardDetailsLabeledValue({
 	label,
-	value
+	value,
+	hCardClassName
 }: {
 	label: string
-	value: string | null | number
+	value: JSX.Element | string | null | number
+	hCardClassName?: string
 }) {
 	return (
 		<>
-			<Grid xs={12} md={2} display="flex" alignItems="center" item>
+			<Grid md={12} lg={2} display="flex" alignItems="center" item>
 				<Typography variant="overline" color="grey">
 					{label}
 				</Typography>
 			</Grid>
-			<Grid xs={0} md={10} item display="flex" alignItems="center">
+			<Grid
+				{...(hCardClassName ? { className: hCardClassName } : undefined)}
+				md={0}
+				lg={10}
+				item
+				display="flex"
+				alignItems="center"
+			>
 				<Typography id={`${label}-preview-value`}>{value}</Typography>
 			</Grid>
 		</>
