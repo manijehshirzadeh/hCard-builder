@@ -11,7 +11,7 @@ export function HcardBuilderForm({
 }: {
 	formikProps: FormikProps<HcardBuilderFormData>
 }) {
-	const hiddenFileInput = useRef(null)
+	const hiddenFileInput = useRef<HTMLInputElement>(null)
 	return (
 		<Box component="form" px={5} noValidate autoComplete="off" py={"auto"}>
 			<Typography variant="h4">hCard Builder</Typography>
