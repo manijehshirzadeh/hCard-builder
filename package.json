@@ -7,7 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+		"pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+		"cypress": "cypress open"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.1",
@@ -26,6 +27,7 @@
 		"typescript": "5.2.2"
 	},
 	"devDependencies": {
+		"cypress": "^13.5.1",
 		"prettier": "^3.1.0"
 	},
 	"browserslist": {

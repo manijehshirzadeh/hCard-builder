@@ -67,6 +67,7 @@ export function HcardPreviewCard({
 					}
 					title={
 						<Typography
+							id="fullname"
 							pt={{ xs: 10, md: 5 }}
 							pl={{ xs: 0, md: 5 }}
 							color="white"
@@ -108,7 +109,9 @@ export function HcardPreviewCard({
 									</Typography>
 								</Grid>
 								<Grid item xs={3} display="flex" alignItems={"center"}>
-									<Typography>{formikProps.values.postCode}</Typography>
+									<Typography id="POSTCODE-preview-value">
+										{formikProps.values.postCode}
+									</Typography>
 								</Grid>
 							</Grid>
 						</Grid>
@@ -120,7 +123,9 @@ export function HcardPreviewCard({
 									</Typography>
 								</Grid>
 								<Grid item xs={3} display="flex">
-									<Typography>{formikProps.values.country}</Typography>
+									<Typography id="COUNTRY-preview-value">
+										{formikProps.values.country}
+									</Typography>
 								</Grid>
 							</Grid>
 						</Grid>

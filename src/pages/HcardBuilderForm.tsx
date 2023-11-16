@@ -170,6 +170,7 @@ export function HcardBuilderForm({
 						}}
 						fullWidth
 						variant="contained"
+						id="submit-hcard-form"
 						onClick={() => formikProps.submitForm()}
 					>
 						Create hCard

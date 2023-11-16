@@ -15,7 +15,7 @@ export function HcardDetailsLabeledValue({
 				</Typography>
 			</Grid>
 			<Grid xs={0} md={10} item display="flex" alignItems="center">
-				<Typography>{value}</Typography>
+				<Typography id={`${label}-preview-value`}>{value}</Typography>
 			</Grid>
 		</>
 	)
