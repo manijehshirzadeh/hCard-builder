@@ -1,7 +1,6 @@
-import * as React from "react"
 import Box from "@mui/material/Box"
 import TextField, { TextFieldProps } from "@mui/material/TextField"
-import { Button, Divider, Grid, Typography } from "@mui/material"
+import { Button, Grid, Typography } from "@mui/material"
 import { FormikProps } from "formik"
 import { HcardBuilderFormData } from "./hcardBuilderFormData"
 import { useRef } from "react"
@@ -62,7 +61,6 @@ export function HcardBuilderForm({
 					/>
 				</Grid>
 				<UnderlinedTitle title="ADDRESS" />
-
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
@@ -150,7 +148,6 @@ export function HcardBuilderForm({
 						type="file"
 						onChange={event => {
 							if (event.target.files && event.target.files[0]) {
-								console.log("Hi mandi")
 								formikProps.setFieldValue(
 									"imageUrl",
 									URL.createObjectURL(event.target.files[0])
