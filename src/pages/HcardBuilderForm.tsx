@@ -34,9 +34,6 @@ export function HcardBuilderForm({
 						{...sharedTextFieldProps}
 						value={formikProps.values.surname}
 						onChange={e => formikProps.setFieldValue("surname", e.target.value)}
-						InputLabelProps={{
-							shrink: true
-						}}
 						id="surname"
 						label="SURNAME"
 					/>
@@ -86,8 +83,8 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.suburn}
-						onChange={e => formikProps.setFieldValue("suburn", e.target.value)}
+						value={formikProps.values.suburb}
+						onChange={e => formikProps.setFieldValue("suburb", e.target.value)}
 						id="suburb"
 						label="SUBURB"
 					/>
@@ -154,7 +151,6 @@ export function HcardBuilderForm({
 								)
 							}
 						}}
-						className="filetype"
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>
@@ -187,6 +183,5 @@ const sharedTextFieldProps: Partial<TextFieldProps> = {
 	InputLabelProps: {
 		shrink: true
 	},
-	defaultValue: "",
 	autoComplete: "off"
 }

@@ -25,7 +25,7 @@ export function HcardPreviewCard({
 		addressLineOne += " " + formikProps.values.streetName
 
 	let addressLindTwo = ""
-	if (formikProps.values.suburn) addressLindTwo += formikProps.values.suburn
+	if (formikProps.values.suburb) addressLindTwo += formikProps.values.suburb
 	if (formikProps.values.state)
 		addressLindTwo += ", " + formikProps.values.state
 

@@ -6,7 +6,7 @@ export function HcardDetailsLabeledValue({
 	hCardClassName
 }: {
 	label: string
-	value: JSX.Element | string | null | number
+	value: JSX.Element | string | undefined | number
 	hCardClassName?: string
 }) {
 	return (

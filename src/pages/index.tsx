@@ -8,17 +8,17 @@ import { HcardBuilderFormData } from "@/pages/hcardBuilderFormData"
 export default function Home() {
 	const formikProps = useFormik<HcardBuilderFormData>({
 		initialValues: {
-			givenName: null,
-			surname: null,
-			email: null,
-			phone: null,
-			streetNumber: null,
-			streetName: null,
-			suburn: null,
-			state: null,
-			postCode: null,
-			country: null,
-			imageUrl: null
+			givenName: "",
+			surname: "",
+			email: "",
+			phone: undefined,
+			streetNumber: undefined,
+			streetName: "",
+			suburb: "",
+			state: "",
+			postCode: undefined,
+			country: "",
+			imageUrl: ""
 		},
 		onSubmit(values) {
 			// TODO: Once a backend is setup for this,
