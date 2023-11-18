@@ -18,20 +18,17 @@ export function HcardPreviewCard({
 }: {
 	formikProps: FormikProps<HcardBuilderFormData>
 }) {
-	let addressLineOne = ""
-	if (formikProps.values.streetNumber)
-		addressLineOne += formikProps.values.streetNumber
-	if (formikProps.values.streetName)
-		addressLineOne += " " + formikProps.values.streetName
+	function combineStringsWithSpaceBetween(
+		stringOne?: string | number,
+		stringTwo?: string
+	): string {
+		let combinedString = ""
+		if (stringOne) combinedString += stringOne
+		if (stringTwo) combinedString += " " + stringTwo
 
-	let addressLindTwo = ""
-	if (formikProps.values.suburb) addressLindTwo += formikProps.values.suburb
-	if (formikProps.values.state)
-		addressLindTwo += ", " + formikProps.values.state
+		return combinedString
+	}
 
-	let fullName = ""
-	if (formikProps.values.givenName) fullName += formikProps.values.givenName
-	if (formikProps.values.surname) fullName += " " + formikProps.values.surname
 	return (
 		<Box position="relative">
 			<Typography position="absolute" top={-30} right={40} color={"#A2A4A8"}>
@@ -75,7 +72,10 @@ export function HcardPreviewCard({
 								color="white"
 								variant="h5"
 							>
-								{fullName}
+								{combineStringsWithSpaceBetween(
+									formikProps.values.givenName,
+									formikProps.values.surname
+								)}
 							</Typography>
 						</Box>
 					}
@@ -111,7 +111,10 @@ export function HcardPreviewCard({
 						<HcardDetailsLabeledValue
 							hCardClassName="street-address"
 							label="ADDRESS"
-							value={addressLineOne}
+							value={combineStringsWithSpaceBetween(
+								formikProps.values.streetNumber,
+								formikProps.values.streetName
+							)}
 						/>
 					</Grid>
 					<Divider />
@@ -119,7 +122,12 @@ export function HcardPreviewCard({
 						<HcardDetailsLabeledValue
 							hCardClassName="region"
 							label=""
-							value={addressLindTwo}
+							value={combineStringsWithSpaceBetween(
+								formikProps.values.suburb
+									? formikProps.values.suburb + ","
+									: undefined,
+								formikProps.values.state
+							)}
 						/>
 					</Grid>
 					<Divider />
