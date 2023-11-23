@@ -17,7 +17,9 @@ export function HcardBuilderForm() {
 
 	return (
 		<Box component="form" px={5} noValidate autoComplete="off" py="auto">
-			<Typography variant="h4">hCard Builder</Typography>
+			<Typography variant="h4">
+				hCard Builder, created by Manijeh Shirzadeh
+			</Typography>
 
 			<Grid container spacing={4}>
 				<UnderlinedTitle title="PERSONAL DETAILS" />
