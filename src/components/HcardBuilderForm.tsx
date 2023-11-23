@@ -16,7 +16,7 @@ export function HcardBuilderForm() {
 	const hiddenFileInput = useRef<HTMLInputElement>(null)
 
 	return (
-		<Box component="form" px={5} noValidate autoComplete="off" py={"auto"}>
+		<Box component="form" px={5} noValidate autoComplete="off" py="auto">
 			<Typography variant="h4">hCard Builder</Typography>
 
 			<Grid container spacing={4}>
@@ -190,9 +190,9 @@ export function HcardBuilderForm() {
 						fullWidth
 						variant="contained"
 						sx={{
-							backgroundColor: "#778C99",
+							backgroundColor: "secondary.main",
 							"&:hover": {
-								backgroundColor: "#374D61"
+								backgroundColor: "secondary.dark"
 							},
 							textTransform: "none"
 						}}
@@ -224,9 +224,9 @@ export function HcardBuilderForm() {
 					<Button
 						size="large"
 						sx={{
-							backgroundColor: "#3DA9E3",
+							backgroundColor: "primary.light",
 							"&:hover": {
-								backgroundColor: "#4DA6D6"
+								backgroundColor: "secondary.light"
 							},
 							boxShadow: 3,
 							textTransform: "none"

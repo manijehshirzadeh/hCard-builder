@@ -20,7 +20,12 @@ export default function Home() {
 					<Grid item xs={12} md={6} mb={{ xs: 2 }}>
 						<HcardBuilderForm />
 					</Grid>
-					<Grid sx={{ backgroundColor: "#E6E7EB" }} item xs={12} md={6}>
+					<Grid
+						sx={{ backgroundColor: "background.default" }}
+						item
+						xs={12}
+						md={6}
+					>
 						<HcardPreviewCard />
 					</Grid>
 				</Grid>

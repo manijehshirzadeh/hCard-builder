@@ -31,13 +31,13 @@ export function HcardPreviewCard() {
 
 	return (
 		<Box position="relative">
-			<Typography position="absolute" top={-30} right={40} color={"#A2A4A8"}>
+			<Typography position="absolute" top={-30} right={40} color="grey.500">
 				HCARD PREVIEW
 			</Typography>
 			<Card className="vcard" sx={{ mx: 5, my: 15, position: "relative" }}>
 				<CardHeader
 					sx={{
-						backgroundColor: "#374D61",
+						backgroundColor: "primary.dark",
 						height: 100,
 						color: "red",
 						pl: { xs: 0 }
@@ -128,16 +128,16 @@ export function HcardPreviewCard() {
 					<Grid height={{ xs: 60, md: 30 }} container>
 						<Grid item md={12} lg={6}>
 							<Grid container>
-								<Grid xs={4} display="flex" alignItems={"center"} item>
+								<Grid xs={4} display="flex" alignItems="center" item>
 									<Typography
 										className="postal-code"
 										variant="overline"
-										color={"grey"}
+										color="grey"
 									>
 										POSTCODE
 									</Typography>
 								</Grid>
-								<Grid item xs={3} display="flex" alignItems={"center"}>
+								<Grid item xs={3} display="flex" alignItems="center">
 									<Typography
 										className="country-name"
 										id="POSTCODE-preview-value"
@@ -149,8 +149,8 @@ export function HcardPreviewCard() {
 						</Grid>
 						<Grid item md={12} lg={6}>
 							<Grid container>
-								<Grid xs={4} display="flex" alignItems={"center"} item>
-									<Typography variant="overline" color={"grey"}>
+								<Grid xs={4} display="flex" alignItems="center" item>
+									<Typography variant="overline" color="grey">
 										COUNTRY
 									</Typography>
 								</Grid>
@@ -161,7 +161,7 @@ export function HcardPreviewCard() {
 								</Grid>
 							</Grid>
 						</Grid>
-					</Grid>{" "}
+					</Grid>
 					<Divider />
 				</CardContent>
 			</Card>
