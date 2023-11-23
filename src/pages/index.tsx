@@ -1,31 +1,9 @@
 import Head from "next/head"
-import { useFormik } from "formik"
 import { HcardBuilderForm } from "@/pages/HcardBuilderForm"
 import { Grid } from "@mui/material"
 import { HcardPreviewCard } from "@/pages/HcardPreviewCard"
-import { HcardBuilderFormData } from "@/pages/hcardBuilderFormData"
 
 export default function Home() {
-	const formikProps = useFormik<HcardBuilderFormData>({
-		initialValues: {
-			givenName: "",
-			surname: "",
-			email: "",
-			phone: undefined,
-			streetNumber: undefined,
-			streetName: "",
-			suburb: "",
-			state: "",
-			postCode: undefined,
-			country: "",
-			imageUrl: ""
-		},
-		onSubmit(values) {
-			// TODO: Once a backend is setup for this,
-			// the submission of the form will be completed.
-		}
-	})
-
 	return (
 		<>
 			<Head>
@@ -40,10 +18,10 @@ export default function Home() {
 			<main>
 				<Grid container height={{ md: "100vh" }}>
 					<Grid item xs={12} md={6} mb={{ xs: 2 }}>
-						<HcardBuilderForm formikProps={formikProps} />
+						<HcardBuilderForm />
 					</Grid>
 					<Grid sx={{ backgroundColor: "#E6E7EB" }} item xs={12} md={6}>
-						<HcardPreviewCard formikProps={formikProps} />
+						<HcardPreviewCard />
 					</Grid>
 				</Grid>
 			</main>

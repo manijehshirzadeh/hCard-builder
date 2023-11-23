@@ -9,15 +9,15 @@ import {
 	Grid,
 	Typography
 } from "@mui/material"
-import { FormikProps } from "formik"
-import { HcardBuilderFormData } from "./hcardBuilderFormData"
 import { HcardDetailsLabeledValue } from "./HcardDetailsLabeledValue"
+import { useSelector } from "react-redux"
+import { RootState } from "@/store"
 
-export function HcardPreviewCard({
-	formikProps
-}: {
-	formikProps: FormikProps<HcardBuilderFormData>
-}) {
+export function HcardPreviewCard() {
+	const { personDetails } = useSelector(
+		(state: RootState) => state.personDetails
+	)
+
 	function combineStringsWithSpaceBetween(
 		stringOne?: string | number,
 		stringTwo?: string
@@ -54,11 +54,7 @@ export function HcardPreviewCard({
 								top: 15
 							}}
 							aria-label="recipe"
-							src={
-								formikProps.values.imageUrl
-									? formikProps.values.imageUrl
-									: undefined
-							}
+							src={personDetails.imageUrl ? personDetails.imageUrl : undefined}
 						>
 							<PersonIcon sx={{ fontSize: 100 }} />
 						</Avatar>
@@ -73,8 +69,8 @@ export function HcardPreviewCard({
 								variant="h5"
 							>
 								{combineStringsWithSpaceBetween(
-									formikProps.values.givenName,
-									formikProps.values.surname
+									personDetails.givenName,
+									personDetails.surname
 								)}
 							</Typography>
 						</Box>
@@ -91,9 +87,9 @@ export function HcardPreviewCard({
 										textDecoration: "none",
 										color: "rgba(0, 0, 0, 0.87)"
 									}}
-									href={`mailto:${formikProps.values.email}`}
+									href={`mailto:${personDetails.email}`}
 								>
-									{formikProps.values.email}
+									{personDetails.email}
 								</a>
 							}
 						/>
@@ -103,7 +99,7 @@ export function HcardPreviewCard({
 						<HcardDetailsLabeledValue
 							hCardClassName="tel"
 							label="PHONE"
-							value={formikProps.values.phone}
+							value={personDetails.phone}
 						/>
 					</Grid>
 					<Divider />
@@ -112,8 +108,8 @@ export function HcardPreviewCard({
 							hCardClassName="street-address"
 							label="ADDRESS"
 							value={combineStringsWithSpaceBetween(
-								formikProps.values.streetNumber,
-								formikProps.values.streetName
+								personDetails.streetNumber,
+								personDetails.streetName
 							)}
 						/>
 					</Grid>
@@ -123,10 +119,8 @@ export function HcardPreviewCard({
 							hCardClassName="region"
 							label=""
 							value={combineStringsWithSpaceBetween(
-								formikProps.values.suburb
-									? formikProps.values.suburb + ","
-									: undefined,
-								formikProps.values.state
+								personDetails.suburb ? personDetails.suburb + "," : undefined,
+								personDetails.state
 							)}
 						/>
 					</Grid>
@@ -148,7 +142,7 @@ export function HcardPreviewCard({
 										className="country-name"
 										id="POSTCODE-preview-value"
 									>
-										{formikProps.values.postCode}
+										{personDetails.postCode}
 									</Typography>
 								</Grid>
 							</Grid>
@@ -162,7 +156,7 @@ export function HcardPreviewCard({
 								</Grid>
 								<Grid item xs={3} display="flex">
 									<Typography id="COUNTRY-preview-value">
-										{formikProps.values.country}
+										{personDetails.country}
 									</Typography>
 								</Grid>
 							</Grid>

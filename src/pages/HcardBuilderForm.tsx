@@ -1,17 +1,20 @@
 import Box from "@mui/material/Box"
 import TextField, { TextFieldProps } from "@mui/material/TextField"
 import { Button, Grid, Typography } from "@mui/material"
-import { FormikProps } from "formik"
-import { HcardBuilderFormData } from "./hcardBuilderFormData"
 import { useRef } from "react"
 import { UnderlinedTitle } from "./UnderlinedTitle"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch, RootState } from "@/store"
+import { updatePersonDetails } from "@/store/personDetailsSlice"
 
-export function HcardBuilderForm({
-	formikProps
-}: {
-	formikProps: FormikProps<HcardBuilderFormData>
-}) {
+export function HcardBuilderForm() {
+	const dispatch = useDispatch<AppDispatch>()
+	const { personDetails } = useSelector(
+		(state: RootState) => state.personDetails
+	)
+
 	const hiddenFileInput = useRef<HTMLInputElement>(null)
+
 	return (
 		<Box component="form" px={5} noValidate autoComplete="off" py={"auto"}>
 			<Typography variant="h4">hCard Builder</Typography>
@@ -21,9 +24,14 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.givenName}
+						value={personDetails.givenName}
 						onChange={e =>
-							formikProps.setFieldValue("givenName", e.target.value)
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									givenName: e.target.value
+								})
+							)
 						}
 						id="given-name"
 						label="GIVEN NAME"
@@ -32,8 +40,15 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.surname}
-						onChange={e => formikProps.setFieldValue("surname", e.target.value)}
+						value={personDetails.surname}
+						onChange={e =>
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									surname: e.target.value
+								})
+							)
+						}
 						id="surname"
 						label="SURNAME"
 					/>
@@ -41,8 +56,15 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.email}
-						onChange={e => formikProps.setFieldValue("email", e.target.value)}
+						value={personDetails.email}
+						onChange={e =>
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									email: e.target.value
+								})
+							)
+						}
 						id="email"
 						label="EMAIL"
 					/>
@@ -50,8 +72,15 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.phone}
-						onChange={e => formikProps.setFieldValue("phone", e.target.value)}
+						value={personDetails.phone}
+						onChange={e =>
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									phone: +e.target.value
+								})
+							)
+						}
 						id="phone"
 						label="PHONE"
 						type="number"
@@ -61,9 +90,14 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.streetNumber}
+						value={personDetails.streetNumber}
 						onChange={e =>
-							formikProps.setFieldValue("streetNumber", e.target.value)
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									streetNumber: +e.target.value
+								})
+							)
 						}
 						id="street-number"
 						label="HOUSE NAME OR #"
@@ -72,9 +106,14 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.streetName}
+						value={personDetails.streetName}
 						onChange={e =>
-							formikProps.setFieldValue("streetName", e.target.value)
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									streetName: e.target.value
+								})
+							)
 						}
 						id="street-name"
 						label="STREET"
@@ -83,8 +122,15 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.suburb}
-						onChange={e => formikProps.setFieldValue("suburb", e.target.value)}
+						value={personDetails.suburb}
+						onChange={e =>
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									suburb: e.target.value
+								})
+							)
+						}
 						id="suburb"
 						label="SUBURB"
 					/>
@@ -92,8 +138,15 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.state}
-						onChange={e => formikProps.setFieldValue("state", e.target.value)}
+						value={personDetails.state}
+						onChange={e =>
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									state: e.target.value
+								})
+							)
+						}
 						id="state"
 						label="STATE"
 					/>
@@ -101,9 +154,14 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.postCode}
+						value={personDetails.postCode}
 						onChange={e =>
-							formikProps.setFieldValue("postCode", e.target.value)
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									postCode: +e.target.value
+								})
+							)
 						}
 						id="postcode"
 						label="POSTCODE"
@@ -113,8 +171,15 @@ export function HcardBuilderForm({
 				<Grid item xs={12} md={6}>
 					<TextField
 						{...sharedTextFieldProps}
-						value={formikProps.values.country}
-						onChange={e => formikProps.setFieldValue("country", e.target.value)}
+						value={personDetails.country}
+						onChange={e =>
+							dispatch(
+								updatePersonDetails({
+									...personDetails,
+									country: e.target.value
+								})
+							)
+						}
 						id="country"
 						label="COUNTRY"
 					/>
@@ -145,9 +210,11 @@ export function HcardBuilderForm({
 						type="file"
 						onChange={event => {
 							if (event.target.files && event.target.files[0]) {
-								formikProps.setFieldValue(
-									"imageUrl",
-									URL.createObjectURL(event.target.files[0])
+								dispatch(
+									updatePersonDetails({
+										...personDetails,
+										imageUrl: URL.createObjectURL(event.target.files[0])
+									})
 								)
 							}
 						}}
@@ -167,7 +234,10 @@ export function HcardBuilderForm({
 						fullWidth
 						variant="contained"
 						id="submit-hcard-form"
-						onClick={() => formikProps.submitForm()}
+						onClick={() => {
+							// TODO: Once a backend is setup for this,
+							// the submission of the form will be completed.
+						}}
 					>
 						Create hCard
 					</Button>
