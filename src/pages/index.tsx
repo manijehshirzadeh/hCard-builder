@@ -1,7 +1,7 @@
 import Head from "next/head"
-import { HcardBuilderForm } from "@/pages/HcardBuilderForm"
+import { HcardBuilderForm } from "@/components/HcardBuilderForm"
 import { Grid } from "@mui/material"
-import { HcardPreviewCard } from "@/pages/HcardPreviewCard"
+import { HcardPreviewCard } from "@/components/HcardPreviewCard"
 
 export default function Home() {
 	return (
